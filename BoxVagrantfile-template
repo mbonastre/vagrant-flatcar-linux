@@ -1,0 +1,14 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # SSH in as the default 'core' user, it has the vagrant ssh key.
+  config.ssh.username = "core"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.provider :virtualbox do |vb|
+    # Guest Additions are unavailable.
+    vb.check_guest_additions = false
+    vb.functional_vboxsf = false
+  end
+end
